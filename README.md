@@ -33,34 +33,9 @@ terraform init
 terraform apply -auto-approve
 
 Cấu hình Security Group
-resource "aws_security_group" "test-security-group" {
-  name        = "test-security-group"
-  description = "Allow SSH and HTTP traffic"
-
   # Quy tắc inbound cho SSH (port 22)
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Cho phép SSH từ mọi IP
-  }
-
   # Quy tắc inbound cho HTTP (port 80)
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Cho phép HTTP từ mọi IP
-  }
-
   # Quy tắc outbound cho tất cả traffic
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"           # Tất cả protocol
-    cidr_blocks = ["0.0.0.0/0"]  # Cho phép gửi traffic đến mọi IP
-  }
-}
 
 Tóm tắt quy trình
 Tạo keypair: Chạy ssh-keygen để tạo cặp khóa SSH.
